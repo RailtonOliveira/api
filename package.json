@@ -1,0 +1,17 @@
+{
+  "name": "api-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/RailtonOliveira/api.git",
+  "author": "Railton Oliveira <railtonoliiveira@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
