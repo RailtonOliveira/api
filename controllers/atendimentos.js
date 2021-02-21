@@ -1,6 +1,12 @@
 const Atendimento = require('../models/atendimentos')
 
 module.exports = app => {
+    app.post('/atendimentos', (req, res) => {
+        const atendimento = req.body
+
+        Atendimento.adiciona(atendimento, res)
+    })
+
     app.get('/atendimentos', (req, res) => {
         Atendimento.lista(res)
     })
@@ -9,12 +15,6 @@ module.exports = app => {
         const id = parseInt(req.params.id)
 
         Atendimento.buscaPorId(id, res)
-    })
-
-    app.post('/atendimentos', (req, res) => {
-        const atendimento = req.body
-
-        Atendimento.adiciona(atendimento, res)
     })
 
     app.patch('/atendimentos/:id', (req, res) => {
