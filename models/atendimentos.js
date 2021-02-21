@@ -41,6 +41,7 @@ class Atendimento {
             })
         }
     }
+
     lista(res) {
         const sql = 'SELECT * FROM Atendimentos'
 
@@ -52,6 +53,7 @@ class Atendimento {
             }
         })
     }
+
     buscaPorId(id, res) {
         const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
 
@@ -61,6 +63,21 @@ class Atendimento {
                 res.status(400).json(erro)
             } else {
                 res.status(200).json(atendimento)
+            }
+        })
+    }
+
+    altera(id, valores, res) {
+        if (valores.data) {
+            valores.data = moment(valores.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
+        }
+        const sql = `UPDATE Atendimentos SET ? WHERE id=?`
+
+        conexao.query(sql, [valores, id], (erro, resultados) => {
+            if (erro) {
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json(resultados)
             }
         })
     }
