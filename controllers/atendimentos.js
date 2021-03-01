@@ -10,7 +10,9 @@ module.exports = app => {
     })
 
     app.get('/atendimentos', (req, res) => {
-        Atendimento.lista(res)
+        Atendimento.lista()
+            .then(resultados => res.json(resultados))
+            .catch(erros => res.status(400).json(erros))
     })
 
     app.get('/atendimentos/:id', (req, res) => {
